@@ -11,7 +11,6 @@ TODO:
 PR are welcome!!!
 
 Credits:
-- Jhon https://github.com/janisslsm
 - SiSTR0 https://github.com/SiSTR0
 - CTN https://github.com/ctn123
 - Al-Azif https://github.com/al-azif
