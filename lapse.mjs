@@ -462,7 +462,7 @@ function make_aliased_rthdrs(sds) {
 
     for (let loop = 0; loop < num_alias; loop++) {
         for (let i = 0; i < num_sds; i++) {
-            setsockopt(sds[i], IPPROTO_IPV6, IPV6_2292PKTOPTIONS, 0, 0);Add commentMore actions
+            setsockopt(sds[i], IPPROTO_IPV6, IPV6_2292PKTOPTIONS, 0, 0);
         }
 
         for (let i = 0; i < num_sds; i++) {
